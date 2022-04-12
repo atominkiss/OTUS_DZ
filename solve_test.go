@@ -1,6 +1,7 @@
 package main
 
 import (
+	"math"
 	"math/big"
 	"reflect"
 	"testing"
@@ -15,12 +16,13 @@ func TestSolve(t *testing.T) {
 	}
 
 	tests := []struct {
-		name string
-		args args
-		a    float64
-		b    float64
-		c    float64
-		want []float64
+		name    string
+		args    args
+		a       float64
+		b       float64
+		c       float64
+		want    []float64
+		wantErr string
 	}{
 		{
 			name: "no root",
@@ -50,13 +52,13 @@ func TestSolve(t *testing.T) {
 			want: []float64{-1, -1},
 		},
 		{
-			name: "exeption",
+			name: "NaN",
 			args: args{
-				a: 0,
-				b: 2,
-				c: 1,
+				a: math.NaN(),
+				b: math.NaN(),
+				c: math.NaN(),
 			},
-			want: []float64{-1, -1},
+			wantErr: "Дискриминант меньше 0!",
 		},
 	}
 
@@ -64,10 +66,9 @@ func TestSolve(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if big.NewFloat(tt.args.a).Cmp(big.NewFloat(0)) != 0 {
 				result, err := solve(tt.args.a, tt.args.b, tt.args.c)
-				if err != nil {
-
-				}
-				if !reflect.DeepEqual(result, tt.want) {
+				if err.Error() != tt.wantErr {
+					t.Errorf("have = %v, want %v", err, tt.wantErr)
+				} else if !reflect.DeepEqual(result, tt.want) {
 					t.Errorf("have = %v, want %v", result, tt.want)
 				}
 			}
