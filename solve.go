@@ -15,7 +15,7 @@ func solve(a, b, c float64) ([]float64, error) {
 		if !math.IsNaN(a) && !math.IsNaN(b) && !math.IsNaN(c) {
 
 			disc := b*b - 4*a*c
-
+			//
 			switch big.NewFloat(disc).Cmp(big.NewFloat(0)) {
 
 			case -1:
@@ -34,7 +34,7 @@ func solve(a, b, c float64) ([]float64, error) {
 				return []float64{x1, x2}, fmt.Errorf("")
 			}
 		} else {
-			return []float64{}, fmt.Errorf("Коэффициенты не числа!")
+			//return []float64{}, fmt.Errorf("Коэффициенты не числа!")
 		}
 	} else {
 		return nil, fmt.Errorf("a == 0!")

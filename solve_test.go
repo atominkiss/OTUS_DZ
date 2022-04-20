@@ -64,7 +64,6 @@ func TestSolve(t *testing.T) {
 			want:    []float64{},
 			wantErr: "a == 0!",
 		},
-
 		{
 			name: "NaN",
 			args: args{
