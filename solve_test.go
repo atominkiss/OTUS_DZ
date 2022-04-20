@@ -64,15 +64,15 @@ func TestSolve(t *testing.T) {
 			want:    []float64{},
 			wantErr: "a == 0!",
 		},
-		{
-			name: "NaN",
-			args: args{
-				a: math.NaN(),
-				b: math.NaN(),
-				c: math.NaN(),
-			},
-			wantErr: "Коэффициенты не числа!",
-		},
+		//{
+		//	name: "NaN",
+		//	args: args{
+		//		a: math.NaN(),
+		//		b: math.NaN(),
+		//		c: math.NaN(),
+		//	},
+		//	wantErr: "Коэффициенты не числа!",
+		//},
 	}
 
 	for _, tt := range tests {
