@@ -21,10 +21,12 @@ func solve(a, b, c float64) ([]float64, error) {
 			case -1:
 				fmt.Println([]float64{})
 				return []float64{}, fmt.Errorf("Дискриминант меньше 0!")
+
 			case 0:
 				x := (-b + math.Sqrt(disc)) / (2 * a)
 				fmt.Println([]float64{x, x})
 				return []float64{x, x}, fmt.Errorf("")
+
 			case 1:
 				x1 := (-b + math.Sqrt(disc)) / (2 * a)
 				x2 := (-b - math.Sqrt(disc)) / (2 * a)
